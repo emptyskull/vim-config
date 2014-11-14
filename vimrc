@@ -22,6 +22,7 @@ set nocompatible
 filetype off 
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'flazz/vim-colorschemes'
 Plugin 'derekwyatt/ag.vim'
 Plugin 'bufkill.vim'
 Plugin 'MarcWeber/vim-addon-completion'
@@ -30,14 +31,23 @@ Plugin 'DfrankUtil'
 Plugin 'EasyMotion'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
+let g:session_autosave = 'no'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-shell'
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'vim-scripts/gnupg.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'laurentgoudet/vim-howdoi'
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'elzr/vim-json'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tyok/nerdtree-ack'
 Plugin 'derekwyatt/vim-npl'
 Plugin 'derekwyatt/vim-protodef'
 Plugin 'derekwyatt/vim-sbt'
@@ -148,6 +158,10 @@ set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ve
 
 " set the gui options the way I like
 set guioptions=acg
+
+" set undodir
+set undodir=~/.vim/undos
+set undofile
 
 " Setting this below makes it sow that error messages don't disappear after one second on startup.
 "set debug=msg
@@ -744,8 +758,10 @@ command! ToggleMinimap call ToggleMinimap()
 "-----------------------------------------------------------------------------
 augroup derek_xsd
   au!
-  au BufEnter *.xsd,*.wsdl,*.xml setl tabstop=4 shiftwidth=4
+  au BufEnter *.xsd,*.wsdl setl tabstop=4 shiftwidth=4
 augroup END
+
+au BufEnter *.xml setl tabstop=2 shiftwidth=2 softtabstop=2
 
 augroup Binary
   au!
